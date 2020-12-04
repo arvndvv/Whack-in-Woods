@@ -75,9 +75,9 @@ body {
             transition: 300s ease;
             margin: 5px;
             transform: rotate(0deg) scale(1);
-        }
-        .restart.hide {
-            animation: hiderestart 1s ease both;
+            &.hide {
+                animation: hiderestart 1s ease both;
+            }
         }
         @keyframes hiderestart {
             from {

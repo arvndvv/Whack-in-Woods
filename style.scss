@@ -116,6 +116,7 @@ body {
                 transform: scale(1, -1);
                 top: 85%;
                 filter: blur(1px) opacity(0.3);
+                visibility: hidden;
             }
         }
         .displayBoard {
@@ -169,6 +170,7 @@ body {
             gap: 10px;
             flex-wrap: wrap;
             .hole {
+                top: 10%;
                 // border: 2px solid red;
                 flex: 1 0 32%;
                 position: relative;
@@ -265,6 +267,7 @@ body {
     }
     body .wrapper .game .hole {
         overflow: hidden;
+        top: 0;
     }
     body .wrapper .game .hole::before {
         height: 40%;
@@ -301,5 +304,8 @@ body {
     }
     body .wrapper .score {
         top: 73%;
+        &::before {
+            visibility: visible;
+        }
     }
 }

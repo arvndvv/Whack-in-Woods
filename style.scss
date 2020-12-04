@@ -1,0 +1,305 @@
+$color:#010124;
+$btnTxt:white;
+$btnbg:#010124;
+$holeColor:#010124;
+$red:#ea4849;
+$loaderColor:#ffc670;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    // display: grid;
+    overflow: hidden;
+    .loadercontainer {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background: $red;
+        display: grid;
+        place-items: center;
+        .loader {
+            // display: block;
+            position: absolute;
+            width: fit-content;
+            height: fit-content;
+            // background: $holeColor;
+            display: flex;
+            gap: 1em;
+            span {
+                display: block;
+                background: transparent;
+                border-top: 1em solid $loaderColor;
+                border-left: 1em solid transparent;
+                border-bottom: 1em solid $loaderColor;
+                border-right: 1em solid transparent;
+                border-radius: 50%;
+                animation: loader 1s linear infinite;
+            }
+        }
+        &.hideloader {
+            display: none;
+        }
+    }
+    @keyframes loader {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+    .wrapper {
+        border: 1px solid black;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: url('./img/bg.webp');
+        // background-size: 245% 105%;
+        background-size: cover;
+        background-position: 60% 95%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        .restart {
+            display: inline;
+            position: absolute;
+            /* width: 50%; */
+            font-size: 3em;
+            transition: 300s ease;
+            margin: 5px;
+            transform: rotate(0deg) scale(1);
+        }
+        .restart.hide {
+            animation: hiderestart 1s ease both;
+        }
+        @keyframes hiderestart {
+            from {
+                transform: rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            to {
+                transform: rotate(360deg) scale(0);
+                opacity: 1;
+            }
+        }
+        .hs {
+            position: absolute;
+            margin: 5px;
+            font-weight: 700;
+            background: black;
+            padding: 5px;
+            border-radius: 5px;
+            color: $btnTxt;
+        }
+        .score {
+            font-size: 5em;
+            color: $color;
+            position: absolute;
+            left: 50%;
+            top: 15%;
+            transform: translate(-50%, -50%);
+            // width: 10vw;
+            height: 10vh;
+            text-align: center;
+            z-index: 105;
+            // text-shadow: 0px -5px 5px rgba(255, 232, 232, 0.6);
+            &::before {
+                content: attr(data-score);
+                position: absolute;
+                transform: scale(1, -1);
+                top: 85%;
+                filter: blur(1px) opacity(0.3);
+            }
+        }
+        .displayBoard {
+            position: absolute;
+            top: calc(20% + 2em);
+            width: 100%;
+            z-index: 200;
+            font-weight: 900;
+            font-size: 2em;
+            text-align: center;
+            color: $color;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+        .timeboard {
+            position: absolute;
+            top: 5em;
+            font-size: 0.7em;
+            color: $btnTxt;
+            background: $btnbg;
+            display: inline-block;
+            padding: 1em;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+        }
+        .startButton {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            color: $btnTxt;
+            background: $btnbg;
+            padding: 1em 3em;
+            font-weight: 600;
+            border-radius: 5px;
+            z-index: 100;
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+        .game {
+            width: 100%;
+            height: 90%;
+            // border: 5px solid red;
+            margin: 10% auto;
+            z-index: 100;
+            padding: 0% 0;
+            position: relative;
+            bottom: 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            .hole {
+                // border: 2px solid red;
+                flex: 1 0 32%;
+                position: relative;
+                // overflow: hidden;
+                filter: hue-rotate(30deg) brightness(110%)contrast(110%)saturate(125%);
+                &::after {
+                    content: '';
+                    display: block;
+                    background-image: url('./img/bush.webp');
+                    // background: $holeColor;
+                    position: absolute;
+                    width: 90%;
+                    height: 70%;
+                    pointer-events: none;
+                    z-index: 2;
+                    bottom: -7%;
+                    background-size: cover;
+                }
+                &::before {
+                    content: '';
+                    display: block;
+                    background-image: url('./img/subbush1.png');
+                    // background: $holeColor;
+                    position: absolute;
+                    width: 80%;
+                    height: 50%;
+                    z-index: 3;
+                    bottom: -2%;
+                    background-size: cover;
+                }
+                .mole {
+                    background-image: url('./img/yoda1.png');
+                    position: absolute;
+                    top: 72%;
+                    width: 45%;
+                    height: 55%;
+                    transition: 0.4s;
+                    background-repeat: no-repeat;
+                    background-position: bottom;
+                    transform: scale(0) translate(50%, 0);
+                    filter: hue-rotate(-155deg) brightness(95%) contrast(120%) saturate(160%);
+                }
+                .mole.small {
+                    background-size: 100%;
+                }
+                .mole.large {
+                    background-size: 100%;
+                }
+                &.up .mole {
+                    top: 15%;
+                    transform: scale(1) translate(50%, 0);
+                }
+            }
+        }
+        &::before {
+            width: 100%;
+            content: "";
+            position: absolute;
+            height: 100%;
+            background: url('./img/extrabg.png');
+            background-size: 100% 65%;
+            background-repeat: no-repeat;
+        }
+        &::after {
+            width: 100%;
+            content: "";
+            position: absolute;
+            height: 60%;
+            bottom: 0;
+            z-index: 1000;
+            background: url('./img/extrabg2.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position-x: 44%;
+            pointer-events: none;
+        }
+    }
+}
+
+@media only screen and (max-width:800px) {
+    .sm-hidden {
+        display: none;
+    }
+    body .wrapper::before {
+        background-size: 100% 68%;
+    }
+    body .wrapper::after {
+        height: 30%;
+    }
+    body .wrapper .game {
+        height: 55%;
+        margin: 75% auto;
+        padding: 0;
+    }
+    body .wrapper .game .hole {
+        overflow: hidden;
+    }
+    body .wrapper .game .hole::before {
+        height: 40%;
+        width: 100%;
+        bottom: -10%;
+    }
+    body .wrapper .game .hole::after {
+        height: 30%;
+        width: 100%;
+    }
+    body .wrapper .game .hole .mole {
+        width: 65%;
+        height: 65%;
+        background-position: top;
+        top: 0%;
+        transform: scale(1) translate(20%, 125%);
+    }
+    body .wrapper .game .hole.up .mole {
+        top: 0%;
+        transform: scale(1) translate(20%, 75%);
+        transform-origin: bottom;
+    }
+    body .wrapper .game .hole .mole.small {
+        background-size: 90%;
+    }
+    body .wrapper .game .hole .mole.large {
+        background-size: 100%;
+    }
+    body .wrapper .hs {
+        margin: unset;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -20%);
+    }
+    body .wrapper .score {
+        top: 73%;
+    }
+}

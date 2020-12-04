@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="./img/fav.png" type="image/png" sizes="16x16">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>WhacK in Woods</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body onload="hideLoader()">
+    <div class="loadercontainer">
+        <div class="loader">
+            <span></span>
+
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="restart hide"><i class="ri-restart-fill"></i></div>
+        <div class="hs">
+        </div>
+        <div class="score" data-score='0'>0</div>
+        <div class="displayBoard"></div>
+        <div class="timeboard">40</div>
+        <button class="startButton">START</button>
+        <div class="game">
+            <div class="sm-hidden hole">
+                <div class="mole large"></div>
+            </div>
+            <div class="sm hole">
+                <div class="sm mole large"></div>
+            </div>
+            <div class="sm hole">
+                <div class="sm mole large"></div>
+            </div>
+            <div class="sm-hidden hole">
+                <div class="mole small"></div>
+            </div>
+            <div class="sm hole">
+                <div class="sm mole small"></div>
+            </div>
+            <div class="sm hole">
+                <div class="sm mole small"></div>
+            </div>
+        </div>
+    </div>
+
+    <audio controls autoplay loop style="display: none;" id="bgm">
+    <source src="./audio/bgm.mp3" type="audio/mpeg">
+</audio>
+    <audio controls style="display: none;" id="whacSound">
+    <source src="./audio/whac.mp3" type="audio/mpeg">
+</audio>
+    </audio>
+    <audio controls style="display: none;" id="moleSound">
+<source src="./audio/mole.mp3" type="audio/mpeg">
+</audio>
+
+    <script src="app.js"></script>
+
+    <!-- Sound from Zapsplat.com -->
+</body>
+
+</html>

@@ -175,7 +175,7 @@ body .wrapper .displayBoard {
 
 body .wrapper .timeboard {
   position: absolute;
-  top: 5em;
+  top: 6em;
   font-size: 0.7em;
   color: white;
   background: #010124;
@@ -239,7 +239,7 @@ body .wrapper .game .hole::after {
   height: 70%;
   pointer-events: none;
   z-index: 2;
-  bottom: -7%;
+  bottom: -8px;
   background-size: cover;
 }
 
@@ -321,7 +321,7 @@ body .wrapper::after {
   }
   body .wrapper .game {
     height: 55%;
-    margin: 75% auto;
+    margin: 20em auto;
     padding: 0;
   }
   body .wrapper .game .hole {
@@ -331,7 +331,7 @@ body .wrapper::after {
   body .wrapper .game .hole::before {
     height: 40%;
     width: 100%;
-    bottom: -10%;
+    bottom: -10px;
   }
   body .wrapper .game .hole::after {
     height: 30%;
